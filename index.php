@@ -114,7 +114,11 @@ if (isset($_POST['nuevaPregunta'])) {
         </div>
         <div>
             <?php
-            echo '<label><input type="radio" name="respuesta" value="respuesta1" />&nbsp;' . $textoRespuesta1 . ' <a class="';
+            echo '<label>'. $textoPregunta . '</label>';
+            echo '<label>'. $textoRespuesta1 . '</label>';
+            echo '<label>'. $textoRespuesta2 . '</label>';
+            echo '<label>'. $textoRespuesta3 . '</label>';
+            echo '<label>'. $textoRespuesta4 . '</label>';
             ?>
         </div>
     </body>

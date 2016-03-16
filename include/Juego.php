@@ -12,120 +12,63 @@
  * @author Sergio
  */
 class Juego {
-    private $numero;
-    private $pregunta;
-    private $respuesta1;
-    private $respuesta2;
-    private $respuesta3;
-    private $respuesta4;
-    private $respuestaCorrecta;
-    private $preguntas = array();
 
-    function __construct($numero, $pregunta, $respuesta1, $respuesta2, $respuesta3, $respuesta4, $respuestaCorrecta, $preguntas) {
-        $this->numero = $numero;
-        $this->pregunta = $pregunta;
-        $this->respuesta1 = $respuesta1;
-        $this->respuesta2 = $respuesta2;
-        $this->respuesta3 = $respuesta3;
-        $this->respuesta4 = $respuesta4;
-        $this->respuestaCorrecta = $respuestaCorrecta;
-        $this->preguntas = $preguntas;
-    }
-    
-    function getNumero() {
-        return $this->numero;
+    private $preguntas;
+
+    public function __construct() {
+        $this->preguntas = array();
     }
 
-    function getPregunta() {
-        return $this->pregunta;
-    }
-
-    function getRespuesta1() {
-        return $this->respuesta1;
-    }
-
-    function getRespuesta2() {
-        return $this->respuesta2;
-    }
-
-    function getRespuesta3() {
-        return $this->respuesta3;
-    }
-
-    function getRespuesta4() {
-        return $this->respuesta4;
-    }
-
-    function getRespuestaCorrecta() {
-        return $this->respuestaCorrecta;
-    }
-
-    function getPreguntas() {
+    public function getPreguntas() {
         return $this->preguntas;
     }
 
-    function setNumero($numero) {
-        $this->numero = $numero;
+    public function getNumeroPreguntas() {
+        return count($this->preguntas);
     }
 
-    function setPregunta($pregunta) {
-        $this->pregunta = $pregunta;
+    public function getNumeroAciertos() {
+        $contador = 0;
+
+        for ($index = 0; $index < count($this->preguntas); $index++) {
+            if ($this->preguntas[$index] === TRUE) {
+                $contador++;
+            }
+        }
+
+        return $contador;
     }
 
-    function setRespuesta1($respuesta1) {
-        $this->respuesta1 = $respuesta1;
+    public function getNumeroErrores() {
+        $contador = 0;
+
+        for ($index = 0; $index < count($this->preguntas); $index++) {
+            if ($this->preguntas[$index] === FALSE) {
+                $contador++;
+            }
+        }
+
+        return $contador;
     }
 
-    function setRespuesta2($respuesta2) {
-        $this->respuesta2 = $respuesta2;
+    public function acierto() {
+        $this->preguntas[] = TRUE;
     }
 
-    function setRespuesta3($respuesta3) {
-        $this->respuesta3 = $respuesta3;
-    }
-
-    function setRespuesta4($respuesta4) {
-        $this->respuesta4 = $respuesta4;
-    }
-
-    function setRespuestaCorrecta($respuestaCorrecta) {
-        $this->respuestaCorrecta = $respuestaCorrecta;
-    }
-
-    function setPreguntas($preguntas) {
-        $this->preguntas = $preguntas;
-    }
-
-    
-    
-    public function acierto(){
-        
-        
-        
-    }
-    
     public function fallo() {
-        
+        $this->preguntas[] = FALSE;
     }
-    
-    public function guarda_juego(){
-        
+
+    public function guarda_juego() {
+        session_start();
+
+        $_SESSION['juego'] = $this->preguntas;
     }
-    
-    public function carga_juego() {
-        
-    }
-    
-    public function mostrarPregunta() {
-        $salida = "";
 
-        $salida .= $this->pregunta;
-        $salida .= " ";
-        
-
-        
-
-        return $salida;
+    public static function carga_juego() {
+        if (isset($_SESSION['juego'])) {
+            $this->preguntas = $_SESSION['juego'];
+        }
     }
 
 }
