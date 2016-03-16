@@ -86,7 +86,7 @@ class DB {
 
         if (isset($resultado)) {
             $row = $resultado->fetch();
-            $valor = $row['pregunta'];
+            $valor = $row['respuesta1'];
         }
 
         return $valor;
@@ -100,14 +100,14 @@ class DB {
 
         if (isset($resultado)) {
             $row = $resultado->fetch();
-            $valor = $row['pregunta'];
+            $valor = $row['respuesta2'];
         }
 
         return $valor;
     }
 
     public function obtieneRespuesta3($numero) {
-        $sql = "SELECT pregunta FROM preguntas WHERE numero =" . $numero . ";";
+        $sql = "SELECT respuesta3 FROM preguntas WHERE numero =" . $numero . ";";
 
         $resultado = self::ejecutaConsulta($sql);
 
@@ -115,7 +115,7 @@ class DB {
 
         if (isset($resultado)) {
             $row = $resultado->fetch();
-            $valor = $row['pregunta'];
+            $valor = $row['respuesta3'];
         }
 
         return $valor;
@@ -130,7 +130,7 @@ class DB {
 
         if (isset($resultado)) {
             $row = $resultado->fetch();
-            $valor = $row['pregunta'];
+            $valor = $row['respuesta4'];
         }
 
         return $valor;
@@ -140,6 +140,19 @@ class DB {
         
         //$sql = "SELECT respuesta". $
         
+    }
+    
+    public function listarNumeroPreguntas() {
+        $sql = "SELECT count(numero) as Num_Preg FROM preguntas";
+        $resultado = self::ejecutaConsulta($sql);
+
+        if ($resultado) {
+            $row = $resultado->fetch();
+            
+            return $row['Num_Preg'];
+        }
+
+        return 0;
     }
 
     public function altaPreguntas($pregunta, $respuesta1, $respuesta2, $respuesta3, $respuesta4, $respuesta) {
