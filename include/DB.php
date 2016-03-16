@@ -62,6 +62,7 @@ class DB {
             throw $ex;
         }
     }
+
     /**
      * 
      * @param int $numero
@@ -81,7 +82,7 @@ class DB {
 
         return $valor;
     }
-    
+
     /**
      * 
      * @param int $numero
@@ -100,7 +101,7 @@ class DB {
 
         return $valor;
     }
-    
+
     /**
      * 
      * @param int $numero
@@ -119,7 +120,7 @@ class DB {
 
         return $valor;
     }
-    
+
     /**
      * 
      * @param int $numero
@@ -139,7 +140,7 @@ class DB {
 
         return $valor;
     }
-    
+
     /**
      * 
      * @param int $numero
@@ -159,8 +160,7 @@ class DB {
 
         return $valor;
     }
-    
-    
+
     /**
      * 
      * @return int
@@ -171,12 +171,35 @@ class DB {
 
         if ($resultado) {
             $row = $resultado->fetch();
-            
+
             return $row['Num_Preg'];
         }
 
         return 0;
     }
+
+    public function verificarRespuesta($num, $respuesta) {
+
+        $sql = "SELECT respuesta FROM preguntas WHERE numero =" . $num . ";";
+
+        $resultado = self::ejecutaConsulta($sql);
+
+        $valor = '';
+
+        if (isset($resultado)) {
+            $row = $resultado->fetch();
+            $valor = $row['respuesta'];
+
+            if (strval($respuesta) === strval($valor)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+
     /**
      * 
      * @param string $pregunta

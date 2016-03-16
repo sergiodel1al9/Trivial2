@@ -6,6 +6,7 @@ include_once './include/Juego.php';
 session_start();
 
 $cliente = new DB();
+$textoPregunta = "";
 $textoRespuesta1 = "";
 $textoRespuesta2 = "";
 $textoRespuesta3 = "";
@@ -44,6 +45,16 @@ echo '<br>';
 echo $cliente->obtieneRespuesta3(1);
 echo '<br>';
 echo $cliente->obtieneRespuesta4(1);
+
+
+if($cliente->verificarRespuesta(1, 2))
+{
+    echo "Acierto";
+}
+else
+{
+    echo "Error";
+}
 
 // Comprobamos si se ha pulsado el botón de nueva pregunta
 if (isset($_POST['nuevaPregunta'])) {
