@@ -60,12 +60,10 @@ class Juego {
     }
 
     public function guarda_juego() {
-        session_start();
-
         $_SESSION['juego'] = $this->preguntas;
     }
 
-    public static function carga_juego() {
+    public static function carga_juego() {        
         if (isset($_SESSION['juego'])) {
             $this->preguntas = $_SESSION['juego'];
         }
