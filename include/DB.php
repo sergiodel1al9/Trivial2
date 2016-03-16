@@ -177,7 +177,13 @@ class DB {
 
         return 0;
     }
-
+    
+    /**
+     * 
+     * @param int $num
+     * @param int $respuesta
+     * @return boolean
+     */
     public function verificarRespuesta($num, $respuesta) {
 
         $sql = "SELECT respuesta FROM preguntas WHERE numero =" . $num . ";";
