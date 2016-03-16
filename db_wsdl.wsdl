@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap-env="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://localhost/Trivial2/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://localhost/Trivial2/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://localhost/Trivial2/"/>
+    </wsdl:types>
+    <wsdl:message name="obtienePreguntaRequest">
+        <wsdl:part name="numero" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtienePreguntaResponse">
+        <wsdl:part name="obtienePreguntaReturn" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta1Request">
+        <wsdl:part name="numero" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta1Response">
+        <wsdl:part name="obtieneRespuesta1Return" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta2Request">
+        <wsdl:part name="numero" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta2Response">
+        <wsdl:part name="obtieneRespuesta2Return" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta3Request">
+        <wsdl:part name="numero" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta3Response">
+        <wsdl:part name="obtieneRespuesta3Return" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta4Request">
+        <wsdl:part name="numero" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="obtieneRespuesta4Response">
+        <wsdl:part name="obtieneRespuesta4Return" type="xsd:string"/>
+    </wsdl:message>
+    <wsdl:message name="listarNumeroPreguntasRequest"/>
+    <wsdl:message name="listarNumeroPreguntasResponse">
+        <wsdl:part name="listarNumeroPreguntasReturn" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="altaPreguntasRequest">
+        <wsdl:part name="pregunta" type="xsd:string"/>
+        <wsdl:part name="respuesta1" type="xsd:string"/>
+        <wsdl:part name="respuesta2" type="xsd:string"/>
+        <wsdl:part name="respuesta3" type="xsd:string"/>
+        <wsdl:part name="respuesta4" type="xsd:string"/>
+        <wsdl:part name="respuesta" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:message name="altaPreguntasResponse">
+        <wsdl:part name="altaPreguntasReturn" type="xsd:int"/>
+    </wsdl:message>
+    <wsdl:portType name="DBPortType">
+        <wsdl:operation name="obtienePregunta">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:obtienePreguntaRequest"/>
+            <wsdl:output message="tns:obtienePreguntaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta1">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:obtieneRespuesta1Request"/>
+            <wsdl:output message="tns:obtieneRespuesta1Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta2">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:obtieneRespuesta2Request"/>
+            <wsdl:output message="tns:obtieneRespuesta2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta3">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:obtieneRespuesta3Request"/>
+            <wsdl:output message="tns:obtieneRespuesta3Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta4">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:obtieneRespuesta4Request"/>
+            <wsdl:output message="tns:obtieneRespuesta4Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="listarNumeroPreguntas">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:listarNumeroPreguntasRequest"/>
+            <wsdl:output message="tns:listarNumeroPreguntasResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="altaPreguntas">
+            <wsdl:documentation/>
+            <wsdl:input message="tns:altaPreguntasRequest"/>
+            <wsdl:output message="tns:altaPreguntasResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DBBinding" type="tns:DBPortType">
+        <soap-env:binding xmlns="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="obtienePregunta">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=obtienePregunta" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta1">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=obtieneRespuesta1" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta2">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=obtieneRespuesta2" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta3">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=obtieneRespuesta3" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="obtieneRespuesta4">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=obtieneRespuesta4" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="listarNumeroPreguntas">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=listarNumeroPreguntas" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="altaPreguntas">
+            <soap-env:operation xmlns="http://schemas.xmlsoap.org/wsdl/soap/" soapAction="http://localhost/Trivial2/servicio_wsdl.php?method=altaPreguntas" style="rpc"/>
+            <wsdl:input>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap-env:body xmlns="http://schemas.xmlsoap.org/wsdl/soap/" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DB">
+        <wsdl:documentation>Description of DB</wsdl:documentation>
+        <wsdl:port name="DBPort" binding="tns:DBBinding">
+            <soap-env:address location="http://localhost/Trivial2/servicio_wsdl.php"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

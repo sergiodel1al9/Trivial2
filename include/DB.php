@@ -62,7 +62,11 @@ class DB {
             throw $ex;
         }
     }
-
+    /**
+     * 
+     * @param int $numero
+     * @return string
+     */
     public function obtienePregunta($numero) {
         $sql = "SELECT pregunta FROM preguntas WHERE numero =" . $numero . ";";
 
@@ -77,7 +81,12 @@ class DB {
 
         return $valor;
     }
-
+    
+    /**
+     * 
+     * @param int $numero
+     * @return string
+     */
     public function obtieneRespuesta1($numero) {
         $sql = "SELECT respuesta1 FROM preguntas WHERE numero =" . $numero . ";";
         $resultado = self::ejecutaConsulta($sql);
@@ -91,7 +100,12 @@ class DB {
 
         return $valor;
     }
-
+    
+    /**
+     * 
+     * @param int $numero
+     * @return string
+     */
     public function obtieneRespuesta2($numero) {
         $sql = "SELECT respuesta2 FROM preguntas WHERE numero =" . $numero . ";";
         $resultado = self::ejecutaConsulta($sql);
@@ -105,7 +119,12 @@ class DB {
 
         return $valor;
     }
-
+    
+    /**
+     * 
+     * @param int $numero
+     * @return string
+     */
     public function obtieneRespuesta3($numero) {
         $sql = "SELECT respuesta3 FROM preguntas WHERE numero =" . $numero . ";";
 
@@ -120,7 +139,12 @@ class DB {
 
         return $valor;
     }
-
+    
+    /**
+     * 
+     * @param int $numero
+     * @return string
+     */
     public function obtieneRespuesta4($numero) {
         $sql = "SELECT respuesta4 FROM preguntas WHERE numero =" . $numero . ";";
 
@@ -136,12 +160,11 @@ class DB {
         return $valor;
     }
     
-    public function verificarRespuesta($num, $respuesta){
-        
-        //$sql = "SELECT respuesta". $
-        
-    }
     
+    /**
+     * 
+     * @return int
+     */
     public function listarNumeroPreguntas() {
         $sql = "SELECT count(numero) as Num_Preg FROM preguntas";
         $resultado = self::ejecutaConsulta($sql);
@@ -154,7 +177,16 @@ class DB {
 
         return 0;
     }
-
+    /**
+     * 
+     * @param string $pregunta
+     * @param string $respuesta1
+     * @param string $respuesta2
+     * @param string $respuesta3
+     * @param string $respuesta4
+     * @param int $respuesta
+     * @return int
+     */
     public function altaPreguntas($pregunta, $respuesta1, $respuesta2, $respuesta3, $respuesta4, $respuesta) {
         $sql = "INSERT INTO preguntas";
         $sql .= " VALUES (0, '$pregunta', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4', '$respuesta')";
