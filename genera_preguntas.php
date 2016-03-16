@@ -26,7 +26,7 @@ if (isset($_POST['añadir'])) {
 
 
         // Realizamos el alta del artista usando el servicio y comprobamos el exito de la acción
-        if ($cliente->altaPreguntas(0, $_POST['pregunta'], $_POST['respuesta1'], $_POST['respuesta2'], $_POST['respuesta3'], $_POST['respuesta4'], $_POST['respuestaCorrecta']));
+        if ($cliente->altaPreguntas($_POST['pregunta'], $_POST['respuesta1'], $_POST['respuesta2'], $_POST['respuesta3'], $_POST['respuesta4'], $_POST['respuestaCorrecta']));
         {
 
             // Si es correcto, mostraremos un mensaje
@@ -35,13 +35,7 @@ if (isset($_POST['añadir'])) {
     }
 
 
-    $pregunta = "";
-    $respuesta1 = "";
-    $respuesta2 = "";
-    $respuesta3 = "";
-    $respuesta4 = "";
-    $respuestaCorrecta = "";
-    $numero = "";
+    
 }
 
 
@@ -52,10 +46,10 @@ if (isset($_POST['añadir'])) {
         <title></title>
     </head>
     <body>
-        <form action='index.php' method='post'>
+        <form action='genera_preguntas.php' method='post'>
 
 
-            <input type="text" name="pregunta" placeholder="Pregunta" id="Pregunta" value="<?php echo $pregunta ?>">
+            <input type="text" name="pregunta" placeholder="Pregunta" id="pregunta" value="<?php echo $pregunta ?>">
 
             <input type="text" name="respuesta1" placeholder="Respuesta 1" id="respuesta1" value="<?php echo $respuesta1 ?>"></input>
 

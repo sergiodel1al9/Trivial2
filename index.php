@@ -5,7 +5,7 @@ include_once './include/Juego.php';
 
 $cliente = new DB();
 
-$cliente->obtienePregunta(1);
+echo $cliente->obtienePregunta(1);
 
 ?>
 <html>

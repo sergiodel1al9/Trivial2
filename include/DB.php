@@ -12,6 +12,7 @@
  * @author Sergio
  */
 class DB {
+
     /**
      * Objeto que almacenará la base de datos PDO
      * @var type PDO Object
@@ -61,62 +62,86 @@ class DB {
             throw $ex;
         }
     }
-    
+
     public function obtienePregunta($numero) {
         $sql = "SELECT pregunta FROM preguntas WHERE numero =" . $numero . ";";
+
         $resultado = self::ejecutaConsulta($sql);
 
-        if ($resultado) {
+        $valor = '';
+
+        if (isset($resultado)) {
             $row = $resultado->fetch();
+            $valor = $row['pregunta'];
         }
 
-        return $row;
+        return $valor;
     }
-    
+
     public function obtieneRespuesta1($numero) {
         $sql = "SELECT respuesta1 FROM preguntas WHERE numero =" . $numero . ";";
         $resultado = self::ejecutaConsulta($sql);
 
-        if ($resultado) {
+        $valor = '';
+
+        if (isset($resultado)) {
             $row = $resultado->fetch();
+            $valor = $row['pregunta'];
         }
 
-        return $row;
+        return $valor;
     }
-    
+
     public function obtieneRespuesta2($numero) {
         $sql = "SELECT respuesta2 FROM preguntas WHERE numero =" . $numero . ";";
         $resultado = self::ejecutaConsulta($sql);
 
-        if ($resultado) {
+        $valor = '';
+
+        if (isset($resultado)) {
             $row = $resultado->fetch();
+            $valor = $row['pregunta'];
         }
 
-        return $row;
+        return $valor;
     }
-    
+
     public function obtieneRespuesta3($numero) {
-        $sql = "SELECT respuesta3 FROM preguntas WHERE numero =" . $numero . ";";
+        $sql = "SELECT pregunta FROM preguntas WHERE numero =" . $numero . ";";
+
         $resultado = self::ejecutaConsulta($sql);
 
-        if ($resultado) {
+        $valor = '';
+
+        if (isset($resultado)) {
             $row = $resultado->fetch();
+            $valor = $row['pregunta'];
         }
 
-        return $row;
+        return $valor;
     }
-    
+
     public function obtieneRespuesta4($numero) {
         $sql = "SELECT respuesta4 FROM preguntas WHERE numero =" . $numero . ";";
+
         $resultado = self::ejecutaConsulta($sql);
 
-        if ($resultado) {
+        $valor = '';
+
+        if (isset($resultado)) {
             $row = $resultado->fetch();
+            $valor = $row['pregunta'];
         }
 
-        return $row;
+        return $valor;
     }
     
+    public function verificarRespuesta($num, $respuesta){
+        
+        //$sql = "SELECT respuesta". $
+        
+    }
+
     public function altaPreguntas($pregunta, $respuesta1, $respuesta2, $respuesta3, $respuesta4, $respuesta) {
         $sql = "INSERT INTO preguntas";
         $sql .= " VALUES (0, '$pregunta', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4', '$respuesta')";
@@ -129,6 +154,5 @@ class DB {
             return $this->dwes->errorInfo()[2];
         }
     }
-    
-    
+
 }
